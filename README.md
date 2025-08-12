@@ -4,7 +4,10 @@ Predict the winning probability of your favourite IPL team **based on real match
 
 ---
 
-![App Screenshot]([https://via.placeholder.com/800x400?text=IPL+Win+Predictor+Screenshot](https://drive.google.com/file/d/1iIE0BAOb7c7qKuiqZMQUeBk-1vdqSXjf/view?usp=sharing))
+## 🖼 Demo
+
+![App Screenshot](https://drive.google.com/uc?export=view&id=1iIE0BAOb7c7qKuiqZMQUeBk-1vdqSXjf)
+
 
 ## Table of Contents
 
@@ -171,3 +174,4 @@ This project is licensed under the **MIT License** — feel free to use, modify,
 ## Contact
 
 If you have questions, suggestions or improvements, open an issue or submit a pull request on the repository.
+
