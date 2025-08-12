@@ -1,158 +1,170 @@
-# 🏏 IPL Win Predictor
 
-Predict the winning probability of your favourite IPL team **based on real match situations** using machine learning.  
-Built with **Python**, **Scikit-Learn**, and **Streamlit**.
+![App Screenshot](https://drive.google.com/uc?export=view&id=1iIE0BAOb7c7qKuiqZMQUeBk-1vdqSXjf)
 
----
 
-## 📌 Features
+## Table of Contents
 
-- Predicts win probability based on:
-  - Batting team & Bowling team
-  - Match city
-  - Target score
-  - Current score
-  - Overs completed
-  - Wickets fallen
-- Clean and interactive **Streamlit UI**
-- Pretrained **Logistic Regression model**
-- Real IPL historical data from `matches.csv` & `deliveries.csv`
+* [Features](#features)
+* [Project Structure](#project-structure)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Data Preprocessing](#data-preprocessing)
+* [Model](#model)
+* [Deployment](#deployment)
+* [Requirements](#requirements)
+* [License](#license)
+* [Acknowledgements](#acknowledgements)
 
 ---
 
-## 🖼 Demo
+## Features
 
-![App Screenshot](https://via.placeholder.com/800x400?text=IPL+Win+Predictor+Screenshot)
+* Predicts win probability using:
+
+  * Batting team & Bowling team
+  * Match city
+  * Target score
+  * Current score
+  * Overs completed
+  * Wickets fallen
+* Clean and interactive **Streamlit** UI
+* Pretrained **Logistic Regression** model (serialized as `pipe.pkl`)
+* Uses historical IPL data from `matches.csv` & `deliveries.csv`
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
+```
 .
-├── app.py # Streamlit web app
-├── pipe.pkl # Trained ML model
-├── matches.csv # IPL match data
-├── deliveries.csv # IPL ball-by-ball data
-├── requirements.txt # Python dependencies
-└── README.md # Project documentation
-
-yaml
-Copy
-Edit
+├── app.py              # Streamlit web app
+├── pipe.pkl            # Trained ML pipeline (Logistic Regression)
+├── matches.csv         # IPL match data
+├── deliveries.csv      # IPL ball-by-ball data
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation
+```
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/ipl-win-predictor.git
-   cd ipl-win-predictor
-Create virtual environment (optional but recommended)
 
-bash
-Copy
-Edit
+```bash
+git clone https://github.com/your-username/ipl-win-predictor.git
+cd ipl-win-predictor
+```
+
+2. (Optional but recommended) Create and activate a virtual environment
+
+```bash
+# macOS / Linux
 python -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
-Install dependencies
+source venv/bin/activate
 
-bash
-Copy
-Edit
+# Windows
+python -m venv venv
+venv\Scripts\activate
+```
+
+3. Install dependencies
+
+```bash
 pip install -r requirements.txt
-Run the app
+```
 
-bash
-Copy
-Edit
+4. Run the app
+
+```bash
 streamlit run app.py
-📊 Data Preprocessing
-Merged matches and deliveries datasets
+```
 
-Removed matches with D/L method applied
+---
 
-Encoded categorical variables using OneHotEncoder
+## Usage
 
-Engineered features:
+1. Open the Streamlit app in your browser (Streamlit will show the local URL after `streamlit run`).
+2. Select the **Batting team**, **Bowling team**, and **Match city** from dropdowns.
+3. Enter the match details:
 
-Runs left
+   * Target score
+   * Current score
+   * Overs completed
+   * Wickets fallen
+4. Click **Predict Probability** to see:
 
-Balls left
+   * Winning percentage for batting & bowling teams
+   * Progress bars visualising win chances
 
-Wickets remaining
+---
 
-Current Run Rate (CRR)
+## Data Preprocessing
 
-Required Run Rate (RRR)
+* Merged `matches.csv` and `deliveries.csv` for feature engineering.
+* Removed matches where Duckworth–Lewis (D/L) method was applied.
+* Encoded categorical variables with `OneHotEncoder`.
+* Engineered features:
 
-🧠 Model
-Logistic Regression classifier
+  * **Runs left**
+  * **Balls left**
+  * **Wickets remaining**
+  * **Current Run Rate (CRR)**
+  * **Required Run Rate (RRR)**
 
-Trained using historical IPL data
+---
 
-Output: Probability of winning (win_prob) & losing (loss_prob)
+## Model
 
-📌 Usage
-Select Batting team, Bowling team, and Match city
+* **Model type:** Logistic Regression (scikit-learn pipeline)
+* **Labels:** Win / Loss for the batting team
+* **Outputs:** `win_prob` and `loss_prob` (probabilities)
+* The trained pipeline is saved as `pipe.pkl` and is loaded by `app.py`.
 
-Enter:
+---
 
-Target score
+## Deployment
 
-Current score
+You can deploy this app for free on **Streamlit Cloud**:
 
-Overs completed
+1. Commit your code to a GitHub repository.
+2. Sign in to Streamlit Cloud and connect the repo.
+3. Set the app entry point to `app.py` and specify any required secrets (if used).
 
-Wickets fallen
+---
 
-Click "Predict Probability"
+## Requirements
 
-View:
+* Python 3.8+
+* pandas
+* numpy
+* scikit-learn
+* streamlit
+* matplotlib
 
-Winning percentage for batting & bowling teams
+Install via:
 
-Progress bars showing chances visually
-
-📦 Requirements
-Python 3.8+
-
-pandas
-
-numpy
-
-scikit-learn
-
-streamlit
-
-matplotlib
-
-Install with:
-
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
-🚀 Deployment
-You can deploy this app for free on Streamlit Cloud:
+```
 
-bash
-Copy
-Edit
-# Commit your code to GitHub
-# Sign in to Streamlit Cloud and link your repo
-# Set up the app entry point as app.py
-📜 License
-This project is licensed under the MIT License — you’re free to use, modify, and share it.
+---
 
-🙌 Acknowledgements
-Kaggle IPL Dataset for the data
+## License
 
-Streamlit for easy web app creation
+This project is licensed under the **MIT License** — feel free to use, modify, and share.
 
-Scikit-Learn for model building
+---
 
-yaml
-Copy
-Edit
+## Acknowledgements
+
+* Kaggle IPL Dataset (for historical matches and deliveries)
+* Streamlit (for the web UI)
+* scikit-learn (for model building)
+
+---
+
+## Contact
+
+If you have questions, suggestions or improvements, open an issue or submit a pull request on the repository.
+
